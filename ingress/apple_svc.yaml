@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: apple-svc
+spec:
+  selector:
+    app: apple
+  ports:
+    - port: 5678
+  
