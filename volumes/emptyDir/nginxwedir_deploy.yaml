@@ -1,0 +1,31 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: nginxwedir
+  name: nginxwedir
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: nginxwedir
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: nginxwedir
+    spec:
+      volumes:
+      - name: volwithemptydir
+        emptyDir: {}
+      containers:
+      - image: nginx
+        name: nginxwedir
+        resources: {}
+        volumeMounts:
+        - name: volwithemptydir
+          mountPath: /opt
+        ports:
+        - containerPort: 80
