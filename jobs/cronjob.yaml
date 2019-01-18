@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cronjob
+  labels:
+    app: cronjob
+    env: test
+spec:
+  schedule: "0 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        containers:
+        - name: box
+          image: busybox
+          command:
+          - "sh"
+          - "-c"
+          - "ping kubernetes.default.svc.cluster.local"
